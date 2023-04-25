@@ -1,5 +1,6 @@
 export default {
-    searchedMeals: []
-
-
+    searchedMeals: [],
+    mealsByLetter: [],
+    mealsByIngredient: [],
+    ingredient: {}
 }
