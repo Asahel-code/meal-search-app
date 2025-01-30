@@ -1,23 +1,56 @@
-import axiosClient from "../axiosClient"
+import { queryClient } from "../queryClient";
+import apiCallServices from "../services/apiCallServices";
 
-export function searchMeals({commit}, keyword){
-    axiosClient.get(`/search.php?s=${keyword}`)
-    .then(({data}) => {
-        commit('setSearchedMeals', data.meals)
-    })
+export async function searchMeals({ commit }, keyword) {
+    commit("setLoading", true);
+    commit("setError", null);
+
+    try {
+        const data = await queryClient.fetchQuery({
+            queryKey: ["search", keyword],
+            queryFn: async () => await apiCallServices.searchMeals(keyword, null),
+        });
+
+        commit("setSearchedMeals", data.meals || []);
+    } catch (error) {
+        commit("setError", error.message);
+    } finally {
+        commit("setLoading", false);
+    }
 }
 
-export function searchMealsByLetter({commit}, letter){
-    axiosClient.get(`/search.php?f=${letter}`)
-    .then(({data}) => {
-        commit('setMealsByLetter', data.meals)
-    })
+export async function searchMealsByLetter({ commit }, letter) {
+    commit("setLoading", true);
+    commit("setError", null);
+
+    try {
+        const data = await queryClient.fetchQuery({
+            queryKey: ["search", letter],
+            queryFn: async () => await apiCallServices.searchMeals(null, letter),
+        });
+
+        commit("setMealsByLetter", data.meals || []);
+    } catch (error) {
+        commit("setError", error.message);
+    } finally {
+        commit("setLoading", false);
+    }
 }
 
-export function searchMealsByIngredient({commit}, ingredient){
-    axiosClient.get(`/filter.php?i=${ingredient}`)
-    .then(({data}) => {
-        commit('setMealsByIngredient', data.meals)
-    })
-}
+export async function searchMealsByIngredient({ commit }, ingredient) {
+    commit("setLoading", true);
+    commit("setError", null);
 
+    try {
+        const data = await queryClient.fetchQuery({
+            queryKey: ["filter", ingredient],
+            queryFn: async () => await apiCallServices.filterMeals(ingredient),
+        });
+
+        commit("setMealsByIngredient", data.meals || []);
+    } catch (error) {
+        commit("setError", error.message);
+    } finally {
+        commit("setLoading", false);
+    }
+}
