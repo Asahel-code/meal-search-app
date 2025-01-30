@@ -2,5 +2,7 @@ export default {
     searchedMeals: [],
     mealsByLetter: [],
     mealsByIngredient: [],
-    ingredient: {}
+    ingredient: {},
+    loading: false,
+    error: null,
 }
