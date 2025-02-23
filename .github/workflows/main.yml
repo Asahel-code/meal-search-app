@@ -1,9 +1,9 @@
-name: Publish pallax landlord main branch
+name: Publish meal search app
 
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
