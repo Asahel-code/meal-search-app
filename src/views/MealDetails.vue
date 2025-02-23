@@ -64,4 +64,4 @@ const { data: meal, isLoading, error } = useQuery({
       </div>
     </div>
   </div>
-</template>z
+</template>
