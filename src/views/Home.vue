@@ -1,18 +1,13 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
-import store from "../store";
-import axiosClient from "../axiosClient";
+import { useQuery } from "@tanstack/vue-query";
 import Meals from "../components/Meals.vue";
+import apiCallServices from "../services/apiCallServices";
 
-const meals = ref([]);
-
-onMounted(async () => {
-  for (let i = 0; i < 10; i++) {
-    axiosClient
-      .get(`/random.php`)
-      .then(({ data }) => meals.value.push(data.meals[0]));
-  }
+const { data: meals, isLoading, error } = useQuery({
+  queryKey: ["random"],
+  queryFn: apiCallServices.getRandomMeals,
 });
+
 </script>
 
 <template>
@@ -21,5 +16,7 @@ onMounted(async () => {
     <h1 class="text-4xl font-bold mb-4 text-orange-500">Random Meals</h1>
   </div>
 
-  <Meals :meals="meals" />
+  <div v-if="isLoading">Loading...</div>
+  <div v-else-if="error" class="text-red-500">Error: {{ error.message }}</div>
+  <Meals v-else :meals="meals" />
 </template>
