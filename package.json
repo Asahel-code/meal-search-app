@@ -31,6 +31,16 @@
       }
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asahel-code/meal-search-app.git"
+  },
+  "author": "Asahel-code",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asahel-code/meal-search-app/issues"
+  },
+  "homepage": "https://github.com/Asahel-code/meal-search-app#readme",
   "dependencies": {
     "@tanstack/vue-query": "^5.66.9",
     "@vueuse/core": "^10.7.0",
