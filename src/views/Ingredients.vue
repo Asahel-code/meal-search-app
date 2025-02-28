@@ -2,7 +2,7 @@
 import store from '../store';
 import {computed, ref} from 'vue';
 import {useRouter} from 'vue-router';
-import apiCallServices from '../services/apiCallServices';
+import apiCallServices from '../api/mealApiServices';
 import {useQuery} from '@tanstack/vue-query';
 
 const router = useRouter();
