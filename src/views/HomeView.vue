@@ -42,9 +42,9 @@ const error = computed(() => (isError.value ? 'Failed to fetch meals' : ''));
 <template>
 	<div class="min-h-screen bg-[#1a1a1a]">
 		<div class="container mx-auto px-4 py-12">
-			<div class="flex justify-center items-center gap-x-40 mx-auto mb-28">
+			<div class="flex justify-center items-center gap-x-40 mx-auto md:mb-28 mb-14">
 				<div class="">
-					<h1 class="text-6xl font-bold mb-4 leading-tight">
+					<h1 class="md:text-6xl text-5xl font-bold mb-4 leading-tight">
 						Make Your
 						<span class="text-primary inline md:block">Dream</span>
 						<span class="block">Food With Us</span>
