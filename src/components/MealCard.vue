@@ -3,6 +3,7 @@ import {computed, ref} from 'vue';
 import {useFavorites} from '../composables/useFavorites';
 import type {Meal} from '../types/meal';
 import VideoModal from './VideoModal.vue';
+import { shareContent } from '../utils';
 
 const props = defineProps<{
 	meal: Meal;
@@ -32,29 +33,23 @@ const handleShare = async (event: Event) => {
 	event.preventDefault();
 	const shareUrl = `${window.location.origin}/meal/${props.meal.idMeal}`;
 
-	if (navigator.share) {
-		try {
-			await navigator.share({
-				title: props.meal.strMeal,
-				text: `Check out this recipe for ${props.meal.strMeal}!`,
-				url: shareUrl,
-			});
-		} catch (err) {
-			if (err instanceof Error && err.name !== 'AbortError') {
-				console.error('Error sharing:', err);
-			}
-		}
+	if (props.meal.value) {
+		await shareContent(
+			props.meal.strMeal || 'Recipe',
+			`Check out this recipe for ${props.meal.strMeal}!`,
+			shareUrl,
+			() => {
+				shareSuccess.value = true;
+				setTimeout(() => {
+					shareSuccess.value = false;
+				}, 2000);
+			},
+			error => {
+				console.error('Failed to share or copy:', error);
+			},
+		);
 	} else {
-		// Fallback to clipboard
-		try {
-			await navigator.clipboard.writeText(shareUrl);
-			shareSuccess.value = true;
-			setTimeout(() => {
-				shareSuccess.value = false;
-			}, 2000);
-		} catch (err) {
-			console.error('Failed to copy:', err);
-		}
+		console.error('Meal is not available for sharing.');
 	}
 };
 </script>
