@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { defineEmits } from 'vue';
-
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
 }>();
 
-// Update parent component when user types
+defineProps<{
+  placeholder?: string
+}>()
+
 const updateQuery = (event: Event) => {
   const target = event.target as HTMLInputElement;
   emit('update:modelValue', target.value);
@@ -19,7 +20,7 @@ const updateQuery = (event: Event) => {
       <input
         @input="updateQuery"
         type="text"
-        placeholder="Search For A Meal"
+        :placeholder="placeholder"
         class="w-full px-6 py-4 bg-[#2a2a2a] rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
       />
       <div

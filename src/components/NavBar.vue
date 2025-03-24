@@ -35,10 +35,10 @@ onUnmounted(() => {
 				<RouterLink to="/my-favourite" class="hover:text-primary transition-colors"
 					>Favorites</RouterLink
 				>
-				<RouterLink to="/by-letter" class="hover:text-primary transition-colors"
-					>Explore By Letter</RouterLink
+				<RouterLink to="/categories" class="hover:text-primary transition-colors"
+					>Explore By Category</RouterLink
 				>
-				<RouterLink to="/by-ingredient" class="hover:text-primary transition-colors"
+				<RouterLink to="/ingredients" class="hover:text-primary transition-colors"
 					>Explore By Ingredient</RouterLink
 				>
 			</div>
@@ -91,13 +91,13 @@ onUnmounted(() => {
 						>Favorites</RouterLink
 					>
 					<RouterLink
-						to="/by-letter"
+						to="/categories"
 						class="hover:text-primary transition-colors"
 						@click="setOpenNav(!openNav)"
-						>Explore By Letter</RouterLink
+						>Explore By Category</RouterLink
 					>
 					<RouterLink
-						to="/by-ingredient"
+						to="/ingredients"
 						class="hover:text-primary transition-colors"
 						@click="setOpenNav(!openNav)"
 						>Explore By Ingredient</RouterLink
