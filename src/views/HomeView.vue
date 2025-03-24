@@ -13,7 +13,6 @@ let debounceTimer: ReturnType<typeof setTimeout>;
 
 // Debounce logic: Update `debouncedQuery` only after 500ms of no input changes
 watch(searchQuery, newQuery => {
-	console.log(searchQuery.value);
 	if (debounceTimer) clearTimeout(debounceTimer); // Reset previous timer
 
 	debounceTimer = setTimeout(() => {
@@ -66,7 +65,7 @@ const error = computed(() => (isError.value ? 'Failed to fetch meals' : ''));
 				</div>
 			</div>
 
-			<SearchBar v-model="searchQuery" />
+			<SearchBar placeholder="Search for a meal" v-model="searchQuery" />
 
 			<div class="mb-12">
 				<h2 class="text-3xl font-bold text-center mb-8">

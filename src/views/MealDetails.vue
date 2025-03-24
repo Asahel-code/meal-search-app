@@ -5,6 +5,7 @@ import {mealApi} from '../api/mealApiServices';
 import type {Meal} from '../types/meal';
 import {useQuery} from '@tanstack/vue-query';
 import VideoModal from '../components/VideoModal.vue';
+import {shareContent} from '../utils';
 
 const route = useRoute();
 
@@ -37,32 +38,26 @@ const videoUrl = computed(() =>
 );
 
 const handleShare = async () => {
-  const shareUrl = window.location.href;
-  
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: meal.value?.strMeal || 'Recipe',
-        text: `Check out this recipe for ${meal.value?.strMeal}!`,
-        url: shareUrl
-      });
-    } catch (err) {
-      if (err instanceof Error && err.name !== 'AbortError') {
-        console.error('Error sharing:', err);
-      }
-    }
-  } else {
-    // Fallback to clipboard
-    try {
-      await navigator.clipboard.writeText(shareUrl);
-      shareSuccess.value = true;
-      setTimeout(() => {
-        shareSuccess.value = false;
-      }, 2000);
-    } catch (err) {
-      console.error('Failed to copy:', err);
-    }
-  }
+	const shareUrl = window.location.href;
+
+	if (meal.value) {
+		await shareContent(
+			meal.value.strMeal || 'Recipe',
+			`Check out this recipe for ${meal.value.strMeal}!`,
+			shareUrl,
+			() => {
+				shareSuccess.value = true;
+				setTimeout(() => {
+					shareSuccess.value = false;
+				}, 2000);
+			},
+			error => {
+				console.error('Failed to share or copy:', error);
+			},
+		);
+	} else {
+		console.error('Meal is not available for sharing.');
+	}
 };
 </script>
 
@@ -72,34 +67,30 @@ const handleShare = async () => {
 	<div v-else-if="meal" class="max-w-[80rem] mx-auto p-8">
 		<!-- Meal name -->
 		<div class="flex justify-between items-center mb-5">
-      <h1 class="text-4xl font-bold text-primary">{{ meal.strMeal }}</h1>
-      <button
-        @click="handleShare"
-        class="px-4 py-2 bg-[#2a2a2a] rounded-full hover:bg-[#3a3a3a] transition-colors flex items-center gap-2"
-      >
-        <svg
-          class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-          />
-        </svg>
-        <span>Share</span>
-        <span
-          v-if="shareSuccess"
-          class="absolute -bottom-8 right-0 bg-black/75 text-white text-sm px-2 py-1 rounded"
-        >
-          Copied!
-        </span>
-      </button>
-    </div>
+			<h1 class="text-4xl font-bold text-primary">{{ meal.strMeal }}</h1>
+			<button
+				@click="handleShare"
+				class="px-4 py-2 bg-[#2a2a2a] rounded-full hover:bg-[#3a3a3a] transition-colors flex items-center gap-2">
+				<svg
+					class="w-5 h-5"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+				</svg>
+				<span>Share</span>
+				<span
+					v-if="shareSuccess"
+					class="absolute -bottom-8 right-0 bg-black/75 text-white text-sm px-2 py-1 rounded">
+					Copied!
+				</span>
+			</button>
+		</div>
 		<div class="flex md:flex-row flex-col md:gap-x-6 gap-y-4">
 			<div class="md:w-1/2 w-full">
 				<!-- Image -->

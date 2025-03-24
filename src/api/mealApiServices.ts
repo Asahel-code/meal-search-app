@@ -4,6 +4,7 @@ import type {
 	MealResponse,
 	CategoryResponse,
 	AreaResponse,
+	IngredientResponse,
 } from '../types/meal';
 
 // Api calls for meals
@@ -47,7 +48,7 @@ export const mealApi = {
      * * @param {string} area The area name.
 	 * @returns {Promise<MealResponse>} A promise that resolves to meals containing the ingredient.
 	 */
-    async filterMeals(ingredient: string, category?: string, area?: string): Promise<MealResponse> {
+    async filterMeals(ingredient?: string, category?: string, area?: string): Promise<MealResponse> {
         let response;
         if (ingredient) {
 			response = await axiosService.get<MealResponse>(`/filter.php?i=${ingredient}`);
@@ -63,10 +64,10 @@ export const mealApi = {
 
 	/**
 	 * Retrieves a list of all available ingredients.
-	 * @returns {Promise<MealResponse>} A promise that resolves to a list of ingredients.
+	 * @returns {Promise<IngredientResponse>} A promise that resolves to a list of ingredients.
 	 */
-	async getIngredients(): Promise<MealResponse> {
-		const response = await axiosService.get<MealResponse>(`/list.php?i=list`);
+	async getIngredients(): Promise<IngredientResponse> {
+		const response = await axiosService.get<IngredientResponse>(`/list.php?i=list`);
 		return response.data;
 	},
 
@@ -85,7 +86,7 @@ export const mealApi = {
 	 * @returns {Promise<CategoryResponse>} A promise that resolves to a list of categories.
 	 */
 	async getCategories(): Promise<CategoryResponse> {
-		const response = await axiosService.get<CategoryResponse>(`/categories.php`);
+		const response = await axiosService.get<CategoryResponse>(`/list.php?c=list`);
 		return response.data;
 	},
 
