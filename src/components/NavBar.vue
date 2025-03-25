@@ -35,7 +35,7 @@ onUnmounted(() => {
 				<RouterLink to="/my-favourite" class="hover:text-primary transition-colors"
 					>Favorites</RouterLink
 				>
-				<RouterLink to="/categories" class="hover:text-primary transition-colors"
+				<RouterLink to="/by-category" class="hover:text-primary transition-colors"
 					>Explore By Category</RouterLink
 				>
 				<RouterLink to="/ingredients" class="hover:text-primary transition-colors"

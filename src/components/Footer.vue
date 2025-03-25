@@ -5,14 +5,19 @@ const currentYear = new Date().getFullYear();
 <template>
 	<footer class="bg-[#2a2a2a] py-12 mt-16">
 		<div class="container mx-auto px-4">
-			<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				<div>
-					<h3 class="text-xl font-bold text-white mb-4">Recipe Finder</h3>
+					<div class="flex items-center gap-x-2 mb-4">
+						<div class="flex items-center space-x-2 w-8 h-8">
+							<img src="/logo.svg" alt="logo" class="w-full" />
+						</div>
+						<h3 class="text-xl font-bold text-white">Dish Discoverer</h3>
+					</div>
 					<p class="text-gray-400 mb-4">
 						Discover delicious recipes from around the world and create your dream
 						meals with our extensive collection.
 					</p>
-					<div class="flex space-x-4">
+					<!-- <div class="flex space-x-4">
 						<a href="#" class="text-gray-400 hover:text-primary transition-colors">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +48,7 @@ const currentYear = new Date().getFullYear();
 									d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
 							</svg>
 						</a>
-					</div>
+					</div> -->
 				</div>
 
 				<div>
@@ -58,14 +63,14 @@ const currentYear = new Date().getFullYear();
 						</li>
 						<li>
 							<router-link
-								to="/by-letter"
+								to="/by-category"
 								class="text-gray-400 hover:text-primary transition-colors"
-								>Explore By Letter</router-link
+								>Explore By Category</router-link
 							>
 						</li>
 						<li>
 							<router-link
-								to="/by-ingredient"
+								to="/ingredients"
 								class="text-gray-400 hover:text-primary transition-colors"
 								>Explore By Ingredient</router-link
 							>
@@ -74,52 +79,16 @@ const currentYear = new Date().getFullYear();
 				</div>
 
 				<div>
-					<h3 class="text-xl font-bold text-white mb-4">Popular Categories</h3>
-					<ul class="space-y-2">
-						<li>
-							<a href="#" class="text-gray-400 hover:text-primary transition-colors"
-								>Breakfast</a
-							>
-						</li>
-						<li>
-							<a href="#" class="text-gray-400 hover:text-primary transition-colors"
-								>Lunch</a
-							>
-						</li>
-						<li>
-							<a href="#" class="text-gray-400 hover:text-primary transition-colors"
-								>Dinner</a
-							>
-						</li>
-						<li>
-							<a href="#" class="text-gray-400 hover:text-primary transition-colors"
-								>Desserts</a
-							>
-						</li>
-						<li>
-							<a href="#" class="text-gray-400 hover:text-primary transition-colors"
-								>Vegetarian</a
-							>
-						</li>
-					</ul>
-				</div>
-
-				<div>
-					<h3 class="text-xl font-bold text-white mb-4">Newsletter</h3>
+					<h3 class="text-xl font-bold text-white mb-4">Buy Me a Coffee</h3>
 					<p class="text-gray-400 mb-4">
-						Subscribe to our newsletter for the latest recipes and cooking tips.
+						If you enjoy this project, consider buying a coffee to support this work
+						and future improvements.
 					</p>
-					<form class="space-y-2">
-						<input
-							type="email"
-							placeholder="Your email address"
-							class="w-full px-4 py-2 bg-[#3a3a3a] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary" />
-						<button
-							type="submit"
-							class="w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors">
-							Subscribe
-						</button>
-					</form>
+					<a
+						href="#"
+						class="block w-full text-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/80 transition-colors">
+						Buy Me a Coffee
+					</a>
 				</div>
 			</div>
 
@@ -148,7 +117,7 @@ const currentYear = new Date().getFullYear();
 							fill="black" />
 					</svg>
 					{{ ' ' }}
-					by Asahel Kigen.
+					by <a href="https://my-portfolio-asahel.netlify.app">Asahel Kigen.</a>
 				</p>
 			</div>
 		</div>
