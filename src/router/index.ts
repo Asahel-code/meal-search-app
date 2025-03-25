@@ -4,6 +4,7 @@ import MealDetails from '../views/MealDetails.vue';
 import FavouritesView from '../views/FavouritesView.vue';
 import Ingredients from '../views/Ingredients.vue';
 import MealsByIngredient from '../views/MealsByIngredient.vue';
+import MealByCategory from '../views/MealByCategory.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/meal/:id',
       name: 'meal-details',
       component: MealDetails
+    },
+    {
+      path: '/by-category',
+      name: 'by-category',
+      component: MealByCategory
     },
     {
       path: '/ingredients',

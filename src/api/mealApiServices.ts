@@ -86,7 +86,7 @@ export const mealApi = {
 	 * @returns {Promise<CategoryResponse>} A promise that resolves to a list of categories.
 	 */
 	async getCategories(): Promise<CategoryResponse> {
-		const response = await axiosService.get<CategoryResponse>(`/list.php?c=list`);
+		const response = await axiosService.get<CategoryResponse>(`/categories.php`);
 		return response.data;
 	},
 
