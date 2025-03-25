@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Asahel-code/meal-search-app/compare/v1.2.0...v1.3.0) (2025-03-25)
+
+
+### Features
+
+* **#27:** added meal by category ([6dea320](https://github.com/Asahel-code/meal-search-app/commit/6dea320956ff9500e2c20ce5cb712aaf6b2d1fb2)), closes [#27](https://github.com/Asahel-code/meal-search-app/issues/27)
+
 # [1.2.0](https://github.com/Asahel-code/meal-search-app/compare/v1.1.0...v1.2.0) (2025-03-24)
 
 
