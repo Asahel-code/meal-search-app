@@ -11,7 +11,10 @@ export interface Meal {
 }
 
 export interface Category {
+  idCategory: string;
   strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
 }
 
 export interface Area {
@@ -30,7 +33,7 @@ export interface MealResponse {
 }
 
 export interface CategoryResponse {
-  meals: Category[];
+  categories: Category[];
 }
 
 export interface AreaResponse {
