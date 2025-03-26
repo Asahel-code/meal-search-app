@@ -91,7 +91,7 @@ onUnmounted(() => {
 						>Favorites</RouterLink
 					>
 					<RouterLink
-						to="/categories"
+						to="/by-category"
 						class="hover:text-primary transition-colors"
 						@click="setOpenNav(!openNav)"
 						>Explore By Category</RouterLink
