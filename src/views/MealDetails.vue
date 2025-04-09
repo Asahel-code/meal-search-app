@@ -66,7 +66,7 @@ const handleShare = async () => {
 	<div v-else-if="error" class="text-red-500">Error: {{ error.message }}</div>
 	<div v-else-if="meal" class="max-w-[80rem] mx-auto p-8">
 		<!-- Meal name -->
-		<div class="flex justify-between items-center mb-5">
+		<div class="flex justify-between items-center mb-5 relative">
 			<h1 class="text-4xl font-bold text-primary">{{ meal.strMeal }}</h1>
 			<button
 				@click="handleShare"
@@ -86,7 +86,7 @@ const handleShare = async () => {
 				<span>Share</span>
 				<span
 					v-if="shareSuccess"
-					class="absolute -bottom-8 right-0 bg-black/75 text-white text-sm px-2 py-1 rounded">
+					class="absolute -bottom-6 right-0 bg-black/75 text-white text-sm px-2 py-1 rounded">
 					Copied!
 				</span>
 			</button>

@@ -33,7 +33,7 @@ const handleShare = async (event: Event) => {
 	event.preventDefault();
 	const shareUrl = `${window.location.origin}/meal/${props.meal.idMeal}`;
 
-	if (props.meal.value) {
+	if (props.meal) {
 		await shareContent(
 			props.meal.strMeal || 'Recipe',
 			`Check out this recipe for ${props.meal.strMeal}!`,
