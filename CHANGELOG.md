@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Asahel-code/meal-search-app/compare/v1.3.0...v1.3.1) (2025-04-09)
+
+
+### Bug Fixes
+
+* fixed copy issue ([331bf77](https://github.com/Asahel-code/meal-search-app/commit/331bf7779ebba01d1641e8ea28888895e4dc8b22))
+
 # [1.3.0](https://github.com/Asahel-code/meal-search-app/compare/v1.2.0...v1.3.0) (2025-03-25)
 
 
