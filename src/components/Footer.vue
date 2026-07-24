@@ -117,7 +117,7 @@ const currentYear = new Date().getFullYear();
 							fill="black" />
 					</svg>
 					{{ ' ' }}
-					by <a href="https://my-portfolio-asahel.netlify.app">Asahel Kigen.</a>
+					by <a href="https://asahel-portfolio.vercel.app">Asahel Kigen.</a>
 				</p>
 			</div>
 		</div>
